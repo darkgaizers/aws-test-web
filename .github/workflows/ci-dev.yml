@@ -31,15 +31,6 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
 
-      - name: Install dependencies 👨🏻‍💻
-        run: npm ci
-
-      - name: Run linter 👀
-        run: npm run lint
-
-      - name: Run tests 🧪
-        run: npm run test
-
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -78,13 +69,13 @@ jobs:
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
           task-definition: task-definition.json
-          container-name: ras-frontend-dev
+          container-name: test-frontend
           image: ${{ steps.build-image.outputs.image }}
 
       - name: Deploy Amazon ECS task definition
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
         with:
           task-definition: ${{ steps.task-def.outputs.task-definition }}
-          service: ras-frontend-dev-service
-          cluster: ras-dev
+          service: test-frontend
+          cluster: testcluster
           wait-for-service-stability: true

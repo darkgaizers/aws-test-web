@@ -1,12 +1,12 @@
 {
-    "family": "ras-frontend-dev",
-    "executionRoleArn": "arn:aws:iam::215023703764:role/ecsTaskExecutionRole",
-    "taskRoleArn": "arn:aws:iam::215023703764:role/ecsTaskExecutionRole",
+    "family": "test-frontend",
+    "executionRoleArn": "arn:aws:iam::690556989199:role/ecsTaskExecutionRole",
+    "taskRoleArn": "arn:aws:iam::690556989199:role/ecsTaskExecutionRole",
     "networkMode": "awsvpc", 
     "containerDefinitions": [
         {
-            "name": "ras-frontend-dev",
-            "image": "215023703764.dkr.ecr.ap-southeast-1.amazonaws.com/ras-frontend-dev:latest",
+            "name": "test-frontend",
+            "image": "690556989199.dkr.ecr.ap-southeast-1.amazonaws.com/test-frontend:latest",
             "portMappings": [
                 {
                     "containerPort": 80,
@@ -17,9 +17,9 @@
             "logConfiguration": {
                 "logDriver": "awslogs",
                 "options": {
-                    "awslogs-group": "ras-frontend-dev",
+                    "awslogs-group": "test-frontend",
                     "awslogs-region": "ap-southeast-1",
-                    "awslogs-stream-prefix": "ras-frontend-dev"
+                    "awslogs-stream-prefix": "test-frontend"
                 }
             },
             "essential": true
